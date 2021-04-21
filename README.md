@@ -4,7 +4,7 @@ This Kata is about implementing a simple tennis game.
 
 ## What are the rules?
 
-The rules could be found on this [file](https://github.com/github/linguist#syntax-highlighting).
+The rules could be found on this [file](https://github.com/Ilagouilly/Tennis-Kata-Java-Project/blob/main/KATA_Tennis.pdf).
 
 ## How can I compile the project locally?
 
