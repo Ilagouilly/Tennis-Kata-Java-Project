@@ -2,19 +2,20 @@ package com.ismaillagouilly.tennis;
 
 import lombok.Getter;
 import lombok.Setter;
-/**
- * Hello world!
- */
-@Getter @Setter
-public class Game
-{
 
-    private Player player1;
-    private Player player2;
-    private String winner;
+/**
+ * Created by Ismail Lagouilly.
+ */
+
+@Getter
+@Setter
+public class Game {
 
     private static final Integer FORTY_SCORE = 3;
     private static final Integer ADVANTAGE_SCORE = 4;
+    private Player player1;
+    private Player player2;
+    private String winner;
 
     public Game(Player player1, Player player2) {
 
@@ -25,8 +26,8 @@ public class Game
 
     public void displayGameScore() {
 
-        if(winner == null) {
-            System.out.println("Current Game Score is: ( "+ player1.getScoreDescription()+" - "+ player2.getScoreDescription()+ " )");
+        if (winner == null) {
+            System.out.println("Current Game Score is: ( " + player1.getScoreDescription() + " - " + player2.getScoreDescription() + " )");
         } else {
             announceWinner();
         }
@@ -34,12 +35,12 @@ public class Game
 
     public void announceWinner() {
 
-        System.out.println("\n\nThe winner of the game is : " + this.winner+"\n\n"); 
+        System.out.println("\n\nThe winner of the game is : " + this.winner + "\n\n");
     }
 
     private void incrementGameScorePlayer(Boolean scoringPlayer) {
 
-        if(scoringPlayer){
+        if (scoringPlayer) {
             player1.incrementGameScore();
         } else {
             player2.incrementGameScore();
@@ -48,20 +49,20 @@ public class Game
 
     public void incrementScorePlayer(Boolean scoringPlayer) {
 
-        if(player1.getGameScore() < FORTY_SCORE && player2.getGameScore() < FORTY_SCORE) {
+        if (player1.getGameScore() < FORTY_SCORE && player2.getGameScore() < FORTY_SCORE) {
 
             incrementGameScorePlayer(scoringPlayer);
 
-        } else if((player1.getGameScore() < FORTY_SCORE && player2.getGameScore() == FORTY_SCORE && scoringPlayer)
-            || (player2.getGameScore() < FORTY_SCORE && player1.getGameScore() == FORTY_SCORE && !scoringPlayer)){
+        } else if ((player1.getGameScore() < FORTY_SCORE && player2.getGameScore() == FORTY_SCORE && scoringPlayer)
+                || (player2.getGameScore() < FORTY_SCORE && player1.getGameScore() == FORTY_SCORE && !scoringPlayer)) {
 
             incrementGameScorePlayer(scoringPlayer);
 
-        } else if((player1.getGameScore() == FORTY_SCORE && player2.getGameScore() < FORTY_SCORE && scoringPlayer)
-            || (player2.getGameScore() == FORTY_SCORE && player1.getGameScore() < FORTY_SCORE && !scoringPlayer)) {
+        } else if ((player1.getGameScore() == FORTY_SCORE && player2.getGameScore() < FORTY_SCORE && scoringPlayer)
+                || (player2.getGameScore() == FORTY_SCORE && player1.getGameScore() < FORTY_SCORE && !scoringPlayer)) {
 
             designateWinner(scoringPlayer);
-        
+
         } else {
             activateDeuceRule(scoringPlayer);
         }
@@ -70,17 +71,17 @@ public class Game
 
     private void activateDeuceRule(Boolean scoringPlayer) {
 
-        if(player1.getGameScore() == FORTY_SCORE && player2.getGameScore() == FORTY_SCORE) {
+        if (player1.getGameScore() == FORTY_SCORE && player2.getGameScore() == FORTY_SCORE) {
 
             incrementGameScorePlayer(scoringPlayer);
 
-        } else if((player1.getGameScore() == ADVANTAGE_SCORE && player2.getGameScore() == FORTY_SCORE && scoringPlayer)
-            || (player2.getGameScore() == ADVANTAGE_SCORE && player1.getGameScore() == FORTY_SCORE && !scoringPlayer)) {
+        } else if ((player1.getGameScore() == ADVANTAGE_SCORE && player2.getGameScore() == FORTY_SCORE && scoringPlayer)
+                || (player2.getGameScore() == ADVANTAGE_SCORE && player1.getGameScore() == FORTY_SCORE && !scoringPlayer)) {
 
             designateWinner(scoringPlayer);
 
-        } else if((player1.getGameScore() == FORTY_SCORE && player2.getGameScore() == ADVANTAGE_SCORE && scoringPlayer)
-            || (player2.getGameScore() == FORTY_SCORE && player1.getGameScore() == ADVANTAGE_SCORE && !scoringPlayer)) {
+        } else if ((player1.getGameScore() == FORTY_SCORE && player2.getGameScore() == ADVANTAGE_SCORE && scoringPlayer)
+                || (player2.getGameScore() == FORTY_SCORE && player1.getGameScore() == ADVANTAGE_SCORE && !scoringPlayer)) {
 
             incrementGameScorePlayer(scoringPlayer);
             resetScoresDeuceRule();
@@ -97,21 +98,21 @@ public class Game
 
     private void designateWinner(Boolean scoringPlayer) {
 
-        if(scoringPlayer){
-            System.out.println(player1.getUsername()+" has won 1 point!");
+        if (scoringPlayer) {
+            System.out.println(player1.getUsername() + " has won 1 point!");
             this.winner = player1.getUsername();
         } else {
-            System.out.println(player2.getUsername()+" has won 1 point!");
+            System.out.println(player2.getUsername() + " has won 1 point!");
             this.winner = player2.getUsername();
         }
         resetGameScores();
     }
 
-    public void resetWinner(){
+    public void resetWinner() {
         this.winner = null;
     }
 
-    private void resetGameScores(){
+    private void resetGameScores() {
         this.player1.playerGameReset();
         this.player2.playerGameReset();
     }

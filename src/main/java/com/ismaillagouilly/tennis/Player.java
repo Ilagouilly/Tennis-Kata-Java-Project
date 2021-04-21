@@ -2,17 +2,17 @@ package com.ismaillagouilly.tennis;
 
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Scanner;
+
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
- * Hello world!
+ * Created by Ismail Lagouilly.
  */
-@Getter @Setter
-public class Player
-{
+
+@Getter
+@Setter
+public class Player {
 
     private String username;
 
@@ -28,14 +28,14 @@ public class Player
 
     public Player(String username) {
 
-    	this.username = username;
-    	this.gameScore = 0;
+        this.username = username;
+        this.gameScore = 0;
         this.gameScoreText = "";
-    	this.setScore = 0;
-    	this.tieBreakScore = 0;
+        this.setScore = 0;
+        this.tieBreakScore = 0;
     }
 
-    public void playerGameReset() {  
+    public void playerGameReset() {
         this.gameScore = 0;
         this.gameScoreText = "";
     }
@@ -45,7 +45,7 @@ public class Player
     }
 
     public Integer incrementGameScore() {
-    	System.out.println(this.username+" has won 1 point!");
+        System.out.println(this.username + " has won 1 point!");
         return gameScore++;
     }
 
