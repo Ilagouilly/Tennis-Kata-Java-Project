@@ -1,6 +1,6 @@
 # Tennis-Kata-Java-Project
 
-* This Kata is about implementing a simple tennis game.
+This Kata is about implementing a simple tennis game.
 
 ## What are the rules?
 
