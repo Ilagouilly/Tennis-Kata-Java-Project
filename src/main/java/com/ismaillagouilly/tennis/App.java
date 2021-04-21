@@ -41,7 +41,7 @@ public class App {
                 game.displayGameScore();
 
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(500);
                 } catch (Exception e) {
                     System.out.println(e);
                 } // thread to sleep for 0.5 seconds
