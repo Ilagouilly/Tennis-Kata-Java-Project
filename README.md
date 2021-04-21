@@ -2,11 +2,18 @@
 
 This Kata is about implementing a simple tennis game.
 
-#Install 
+## What are the rules?
 
+The rules could be found on this [file](https://github.com/github/linguist#syntax-highlighting).
+
+## How can I compile the project locally?
+
+```
 mvn clean install
+```
 
-#Execute 
+## How can I execute the project?
 
+```
 java -jar target/my-app-1.0-SNAPSHOT.jar
-
+```
