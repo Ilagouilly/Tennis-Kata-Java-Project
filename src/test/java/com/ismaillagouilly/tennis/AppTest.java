@@ -345,8 +345,6 @@ public class AppTest {
             i = 0;
             set.incrementSetScorePlayer(game.getWinner());
             set.displaySetScore();
-            System.out.println("###### SET1 " + set.getWinner());
-            System.out.println("###### GAME2 " + game.getWinner());
 
             game.resetWinner();
 
@@ -358,9 +356,7 @@ public class AppTest {
             i = 0;
             set.incrementSetScorePlayer(game.getWinner());
             set.displaySetScore();
-            System.out.println("###### GAME1 " + game.getWinner());
             game.resetWinner();
-            System.out.println("###### SET1 " + set.getWinner());
         }
         //Current Set Score is: ( 6 - 6 )
         //
@@ -374,9 +370,7 @@ public class AppTest {
         i = 0;
         set.incrementSetScorePlayer(game.getWinner());
         set.displaySetScore();
-        System.out.println("###### GAME1 " + game.getWinner());
         game.resetWinner();
-        System.out.println("###### SET1 " + set.getWinner());
 
         //Current Set Score is: ( 6 - 6 )
         //
@@ -433,9 +427,7 @@ public class AppTest {
             i = 0;
             set.incrementSetScorePlayer(game.getWinner());
             set.displaySetScore();
-            System.out.println("###### GAME1 " + game.getWinner());
             game.resetWinner();
-            System.out.println("###### SET1 " + set.getWinner());
             while (game.getWinner() == null) {
                 quickestSetWinDataSetP2.get(i);
                 game.incrementScorePlayer(quickestSetWinDataSetP2.get(i) == 0);
@@ -444,8 +436,6 @@ public class AppTest {
             i = 0;
             set.incrementSetScorePlayer(game.getWinner());
             set.displaySetScore();
-            System.out.println("###### SET1 " + set.getWinner());
-            System.out.println("###### GAME2 " + game.getWinner());
 
             game.resetWinner();
         }
@@ -461,9 +451,7 @@ public class AppTest {
         i = 0;
         set.incrementSetScorePlayer(game.getWinner());
         set.displaySetScore();
-        System.out.println("###### GAME1 " + game.getWinner());
         game.resetWinner();
-        System.out.println("###### SET1 " + set.getWinner());
 
         //Current Set Score is: ( 6 - 7 )
         //
