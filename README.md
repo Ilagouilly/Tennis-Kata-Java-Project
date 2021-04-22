@@ -19,7 +19,7 @@ java -jar target/my-app-1.0-SNAPSHOT.jar
 ```
 
 
-## Can I have a a glimpse ?
+## Can I have a glimpse at it?
 
 Of course!
 
