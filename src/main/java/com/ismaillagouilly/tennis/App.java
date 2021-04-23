@@ -25,7 +25,6 @@ public class App {
         System.out.print("Enter player2's username: ");
         String player2Username = scannerInPlayer2.nextLine();
 
-
         Player player2 = new Player(player2Username);
 
         Game game = new Game(player1, player2);
@@ -36,14 +35,14 @@ public class App {
 
             while (game.getWinner() == null) {
 
-                game.incrementScorePlayer(randomScore());
+                game.incrementGameScorePlayer(randomScore());
 
                 game.displayGameScore();
 
                 try {
                     Thread.sleep(500);
-                } catch (Exception e) {
-                    System.out.println(e);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 } // thread to sleep for 0.5 seconds
             }
 
@@ -56,6 +55,10 @@ public class App {
 
         displayClosingBanner();
 
+    }
+
+    private static Boolean randomScore() {
+        return Math.random() < 0.5;
     }
 
     private static void displayOpeningBanner() {
@@ -87,10 +90,6 @@ public class App {
         System.out.println("                              ##       ##  #### ##     ##   ");
         System.out.println("                              ##       ##   ### ##     ##   ");
         System.out.println("                              ######## ##    ## ########    ");
-    }
-
-    private static Boolean randomScore() {
-        return Math.random() < 0.5;
     }
 
 }

@@ -36,8 +36,7 @@ public class AppTest {
 
         while (game.getWinner() == null) {
 
-            testQuickestGameWinP1.get(i);
-            game.incrementScorePlayer(testQuickestGameWinP1.get(i) == 0);
+            game.incrementGameScorePlayer(testQuickestGameWinP1.get(i) == 0);
             i++;
         }
         assertEquals(PLAYER_1, game.getWinner());
@@ -63,8 +62,7 @@ public class AppTest {
 
         while (game.getWinner() == null) {
 
-            testQuickestGameWinP2.get(i);
-            game.incrementScorePlayer(testQuickestGameWinP2.get(i) == 0);
+            game.incrementGameScorePlayer(testQuickestGameWinP2.get(i) == 0);
             i++;
         }
         assertEquals(PLAYER_2, game.getWinner()); // Assure that Player2 wins
@@ -92,8 +90,7 @@ public class AppTest {
 
         while (game.getWinner() == null) {
 
-            testSimpleGameWinP1.get(i);
-            game.incrementScorePlayer(testSimpleGameWinP1.get(i) == 0);
+            game.incrementGameScorePlayer(testSimpleGameWinP1.get(i) == 0);
             i++;
         }
         assertEquals(PLAYER_1, game.getWinner()); // Assure that Player1 wins
@@ -121,8 +118,7 @@ public class AppTest {
 
         while (game.getWinner() == null) {
 
-            testSimpleGameWinP1.get(i);
-            game.incrementScorePlayer(testSimpleGameWinP1.get(i) == 0);
+            game.incrementGameScorePlayer(testSimpleGameWinP1.get(i) == 0);
             i++;
         }
         assertEquals(PLAYER_2, game.getWinner()); // Assure that Player2 wins
@@ -164,8 +160,7 @@ public class AppTest {
 
         while (game.getWinner() == null) {
 
-            testDeuceRuleP1.get(i);
-            game.incrementScorePlayer(testDeuceRuleP1.get(i) == 0);
+            game.incrementGameScorePlayer(testDeuceRuleP1.get(i) == 0);
             i++;
         }
         assertEquals(PLAYER_1, game.getWinner()); // Assure that Player1 wins
@@ -207,8 +202,7 @@ public class AppTest {
 
         while (game.getWinner() == null) {
 
-            testDeuceRuleDataSet.get(i);
-            game.incrementScorePlayer(testDeuceRuleDataSet.get(i) == 0);
+            game.incrementGameScorePlayer(testDeuceRuleDataSet.get(i) == 0);
             i++;
         }
         assertEquals(PLAYER_2, game.getWinner()); // Assure that Player2 wins
@@ -243,8 +237,8 @@ public class AppTest {
         int i = 0;
         for (int index = 0; index < 6; index++) {
             while (game.getWinner() == null) {
-                quickestSetWinDataSetP1.get(i);
-                game.incrementScorePlayer(quickestSetWinDataSetP1.get(i) == 0);
+
+                game.incrementGameScorePlayer(quickestSetWinDataSetP1.get(i) == 0);
                 i++;
             }
             i = 0;
@@ -284,8 +278,8 @@ public class AppTest {
         int i = 0;
         for (int index = 0; index < 6; index++) {
             while (game.getWinner() == null) {
-                quickestSetWinDataSetP2.get(i);
-                game.incrementScorePlayer(quickestSetWinDataSetP2.get(i) == 0);
+
+                game.incrementGameScorePlayer(quickestSetWinDataSetP2.get(i) == 0);
                 i++;
             }
             i = 0;
@@ -338,8 +332,8 @@ public class AppTest {
 
         for (int index = 0; index < 14; index++) {
             while (game.getWinner() == null) {
-                testTieBreakWinP2.get(i);
-                game.incrementScorePlayer(testTieBreakWinP2.get(i) == 0);
+
+                game.incrementGameScorePlayer(testTieBreakWinP2.get(i) == 0);
                 i++;
             }
             i = 0;
@@ -349,8 +343,8 @@ public class AppTest {
             game.resetWinner();
 
             while (game.getWinner() == null) {
-                testTieBreakWinP1.get(i);
-                game.incrementScorePlayer(testTieBreakWinP1.get(i) == 0);
+
+                game.incrementGameScorePlayer(testTieBreakWinP1.get(i) == 0);
                 i++;
             }
             i = 0;
@@ -363,8 +357,8 @@ public class AppTest {
         //Tie Break Score is: ( 8 - 9 )
 
         while (game.getWinner() == null) {
-            testTieBreakWinP1.get(i);
-            game.incrementScorePlayer(testTieBreakWinP1.get(i) == 0);
+
+            game.incrementGameScorePlayer(testTieBreakWinP1.get(i) == 0);
             i++;
         }
         i = 0;
@@ -420,8 +414,8 @@ public class AppTest {
 
         for (int index = 0; index < 14; index++) {
             while (game.getWinner() == null) {
-                quickestSetWinDataSetP1.get(i);
-                game.incrementScorePlayer(quickestSetWinDataSetP1.get(i) == 0);
+
+                game.incrementGameScorePlayer(quickestSetWinDataSetP1.get(i) == 0);
                 i++;
             }
             i = 0;
@@ -429,8 +423,8 @@ public class AppTest {
             set.displaySetScore();
             game.resetWinner();
             while (game.getWinner() == null) {
-                quickestSetWinDataSetP2.get(i);
-                game.incrementScorePlayer(quickestSetWinDataSetP2.get(i) == 0);
+
+                game.incrementGameScorePlayer(quickestSetWinDataSetP2.get(i) == 0);
                 i++;
             }
             i = 0;
@@ -444,8 +438,8 @@ public class AppTest {
         //Tie Break Score is: ( 8 - 9 )
 
         while (game.getWinner() == null) {
-            quickestSetWinDataSetP2.get(i);
-            game.incrementScorePlayer(quickestSetWinDataSetP2.get(i) == 0);
+
+            game.incrementGameScorePlayer(quickestSetWinDataSetP2.get(i) == 0);
             i++;
         }
         i = 0;

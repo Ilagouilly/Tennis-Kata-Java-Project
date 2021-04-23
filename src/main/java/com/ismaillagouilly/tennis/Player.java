@@ -15,16 +15,12 @@ import java.util.List;
 public class Player {
 
     private String username;
-
     private Integer gameScore;
-
     private String gameScoreText;
-
     private Integer setScore;
-
     private Integer tieBreakScore;
 
-    private List<String> pointsList = Arrays.asList("0", "15", "30", "40", "ADV");
+    private static final List<String> pointsList = Arrays.asList("0", "15", "30", "40", "ADV");
 
     public Player(String username) {
 
@@ -46,15 +42,15 @@ public class Player {
 
     public Integer incrementGameScore() {
         System.out.println(this.username + " has won 1 point!");
-        return gameScore++;
+        return this.gameScore++;
     }
 
     public Integer incrementSetScore() {
-        return setScore++;
+        return this.setScore++;
     }
 
     public Integer incrementTieBreakScore() {
-        return tieBreakScore++;
+        return this.tieBreakScore++;
     }
 
 

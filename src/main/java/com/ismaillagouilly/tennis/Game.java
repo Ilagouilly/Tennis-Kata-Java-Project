@@ -13,6 +13,7 @@ public class Game {
 
     private static final Integer FORTY_SCORE = 3;
     private static final Integer ADVANTAGE_SCORE = 4;
+
     private Player player1;
     private Player player2;
     private String winner;
@@ -27,8 +28,10 @@ public class Game {
     public void displayGameScore() {
 
         if (winner == null) {
+
             System.out.println("Current Game Score is: ( " + player1.getScoreDescription() + " - " + player2.getScoreDescription() + " )");
         } else {
+
             announceWinner();
         }
     }
@@ -38,31 +41,37 @@ public class Game {
         System.out.println("\n\nThe winner of the game is : " + this.winner + "\n\n");
     }
 
-    private void incrementGameScorePlayer(Boolean scoringPlayer) {
+    private void incrementScorePlayer(Boolean scoringPlayer) {
 
         if (scoringPlayer) {
+
             player1.incrementGameScore();
         } else {
+
             player2.incrementGameScore();
         }
     }
 
-    public void incrementScorePlayer(Boolean scoringPlayer) {
+    public void incrementGameScorePlayer(Boolean scoringPlayer) {
 
+        // Game Score is less or equal to ( 30 - 30 ) => always increment scores
         if (player1.getGameScore() < FORTY_SCORE && player2.getGameScore() < FORTY_SCORE) {
 
-            incrementGameScorePlayer(scoringPlayer);
+            incrementScorePlayer(scoringPlayer);
 
-        } else if ((player1.getGameScore() < FORTY_SCORE && player2.getGameScore() == FORTY_SCORE && scoringPlayer)
-                || (player2.getGameScore() < FORTY_SCORE && player1.getGameScore() == FORTY_SCORE && !scoringPlayer)) {
+            // Game Score with {X<40} is ( X - 40 ) or ( 40 - X ) leading to X + 1 point => increment scores
+        } else if ((player1.getGameScore() < FORTY_SCORE && player2.getGameScore().equals(FORTY_SCORE) && scoringPlayer)
+                || (player2.getGameScore() < FORTY_SCORE && player1.getGameScore().equals(FORTY_SCORE) && !scoringPlayer)) {
 
-            incrementGameScorePlayer(scoringPlayer);
+            incrementScorePlayer(scoringPlayer);
 
-        } else if ((player1.getGameScore() == FORTY_SCORE && player2.getGameScore() < FORTY_SCORE && scoringPlayer)
-                || (player2.getGameScore() == FORTY_SCORE && player1.getGameScore() < FORTY_SCORE && !scoringPlayer)) {
+            // Game Score with {X<40} is ( X - 40 ) or ( 40 - X ) leading to score above 40 => designate a winner
+        } else if ((player1.getGameScore().equals(FORTY_SCORE) && player2.getGameScore() < FORTY_SCORE && scoringPlayer)
+                || (player2.getGameScore().equals(FORTY_SCORE) && player1.getGameScore() < FORTY_SCORE && !scoringPlayer)) {
 
             designateWinner(scoringPlayer);
 
+            // Game Score is ( 40 - 40 ) or above => activate deuce rule
         } else {
             activateDeuceRule(scoringPlayer);
         }
@@ -71,19 +80,22 @@ public class Game {
 
     private void activateDeuceRule(Boolean scoringPlayer) {
 
-        if (player1.getGameScore() == FORTY_SCORE && player2.getGameScore() == FORTY_SCORE) {
+        // Game Score is ( 40 - 40 ) => increment score to ADV
+        if (player1.getGameScore().equals(FORTY_SCORE) && player2.getGameScore().equals(FORTY_SCORE)) {
 
-            incrementGameScorePlayer(scoringPlayer);
+            incrementScorePlayer(scoringPlayer);
 
-        } else if ((player1.getGameScore() == ADVANTAGE_SCORE && player2.getGameScore() == FORTY_SCORE && scoringPlayer)
-                || (player2.getGameScore() == ADVANTAGE_SCORE && player1.getGameScore() == FORTY_SCORE && !scoringPlayer)) {
+            // Game Score is ( ADV - 40 ) or ( 40 - ADV ) leading to score above ADV => designate a winner
+        } else if ((player1.getGameScore().equals(ADVANTAGE_SCORE) && player2.getGameScore().equals(FORTY_SCORE) && scoringPlayer)
+                || (player2.getGameScore().equals(ADVANTAGE_SCORE) && player1.getGameScore().equals(FORTY_SCORE) && !scoringPlayer)) {
 
             designateWinner(scoringPlayer);
 
-        } else if ((player1.getGameScore() == FORTY_SCORE && player2.getGameScore() == ADVANTAGE_SCORE && scoringPlayer)
-                || (player2.getGameScore() == FORTY_SCORE && player1.getGameScore() == ADVANTAGE_SCORE && !scoringPlayer)) {
+            // Game Score is ( ADV - 40 ) or ( 40 - ADV ) leading to score ( ADV - ADV ) => increment scores & activate deuce rule
+        } else if ((player1.getGameScore().equals(FORTY_SCORE) && player2.getGameScore().equals(ADVANTAGE_SCORE) && scoringPlayer)
+                || (player2.getGameScore().equals(FORTY_SCORE) && player1.getGameScore().equals(ADVANTAGE_SCORE) && !scoringPlayer)) {
 
-            incrementGameScorePlayer(scoringPlayer);
+            incrementScorePlayer(scoringPlayer);
             resetScoresDeuceRule();
         }
     }
@@ -99,9 +111,11 @@ public class Game {
     private void designateWinner(Boolean scoringPlayer) {
 
         if (scoringPlayer) {
+
             System.out.println(player1.getUsername() + " has won 1 point!");
             this.winner = player1.getUsername();
         } else {
+
             System.out.println(player2.getUsername() + " has won 1 point!");
             this.winner = player2.getUsername();
         }
@@ -113,6 +127,7 @@ public class Game {
     }
 
     private void resetGameScores() {
+
         this.player1.playerGameReset();
         this.player2.playerGameReset();
     }
