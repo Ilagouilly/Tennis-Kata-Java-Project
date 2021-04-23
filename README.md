@@ -17,3 +17,10 @@ mvn clean install
 ```
 java -jar target/my-app-1.0-SNAPSHOT.jar
 ```
+
+
+## Can I have a glimpse at it?
+
+Of course!
+
+<img src="KATA-tennis-screenshot.PNG"/>
