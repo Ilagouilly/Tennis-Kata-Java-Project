@@ -15,7 +15,7 @@ mvn clean install
 ## How can I execute the project?
 
 ```
-java -jar target/my-app-1.0-SNAPSHOT.jar
+java -jar target/tennis-kata-1.0.0.jar
 ```
 
 
