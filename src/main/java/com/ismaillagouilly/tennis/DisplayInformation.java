@@ -1,13 +1,13 @@
 package com.ismaillagouilly.tennis;
 
 /**
- * Created by Ismail Lagouilly.
- */
+* Created by Ismail Lagouilly.
+*/
 /* ********************************************************************************* */
 /*                                                                                   */
 /*  DisplayInformation Interface                                                     */
 /*                                                                                   */
-/*  Describes the methods required to display information about a Tennis Game          */
+/*  Describes the methods required to display information about a Tennis Game        */
 /*                                                                                   */
 /* ********************************************************************************* */
 
