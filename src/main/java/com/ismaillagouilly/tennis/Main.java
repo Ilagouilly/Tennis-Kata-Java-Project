@@ -24,13 +24,13 @@ public class Main {
 
         // Instantiate Player1
         Scanner scannerInPlayer1 = new Scanner(System.in);
-        System.out.print("Enter player1 username: ");
+        System.out.print("Please enter a username for player1: ");
         String player1Username = scannerInPlayer1.nextLine();
         Player player1 = new Player(player1Username);
 
         // Instantiate Player2
         Scanner scannerInPlayer2 = new Scanner(System.in);
-        System.out.print("Enter player2's username: ");
+        System.out.print("Please enter a username for player2: ");
         String player2Username = scannerInPlayer2.nextLine();
         Player player2 = new Player(player2Username);
 
