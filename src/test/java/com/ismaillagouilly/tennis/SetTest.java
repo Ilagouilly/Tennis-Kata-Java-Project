@@ -39,7 +39,7 @@ public class SetTest {
             set.incrementSetScorePlayer(set.getCurrentGame().getWinner());
         }
 
-        // Ensure Player1 wins the game
+        // Ensure Player1 wins the set
         assertEquals(player1, set.getWinner());
     }
 
@@ -66,7 +66,7 @@ public class SetTest {
             set.incrementSetScorePlayer(set.getCurrentGame().getWinner());
         }
 
-        // Ensure Player2 wins the game
+        // Ensure Player2 wins the set
         assertEquals(player2, set.getWinner());
     }
 
@@ -111,7 +111,7 @@ public class SetTest {
             set.displaySetScore(displayScoresImplSystemOut);
         }
 
-        // Ensure Player1 wins the game
+        // Ensure Player1 wins the set
         assertEquals(player1, set.getWinner());
     }
 
@@ -155,7 +155,7 @@ public class SetTest {
             setIndex++;
             set.displaySetScore(displayScoresImplSystemOut);
         }
-        // Ensure Player2 wins the game
+        // Ensure Player2 wins the set
         assertEquals(player2, set.getWinner());
     }
 
@@ -209,7 +209,7 @@ public class SetTest {
             set.incrementSetScorePlayer(player);
         }
 
-        // Ensure Player1 wins the game
+        // Ensure Player1 wins the set
         assertEquals(player1, set.getWinner());
     }
 
@@ -263,7 +263,7 @@ public class SetTest {
             set.incrementSetScorePlayer(player);
         }
 
-        // Ensure Player2 wins the game
+        // Ensure Player2 wins the set
         assertEquals(player2, set.getWinner());
     }
 
@@ -326,7 +326,7 @@ public class SetTest {
             set.incrementSetScorePlayer(player);
         }
 
-        // Ensure Player1 wins the game
+        // Ensure Player1 wins the set
         assertEquals(player1, set.getWinner());
     }
 
@@ -389,7 +389,7 @@ public class SetTest {
             set.incrementSetScorePlayer(player);
         }
 
-        // Ensure Player2 wins the game
+        // Ensure Player2 wins the set
         assertEquals(player2, set.getWinner());
     }
 }
