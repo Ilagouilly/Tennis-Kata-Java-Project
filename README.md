@@ -24,3 +24,9 @@ java -jar target/tennis-kata-1.0.0.jar
 Of course!
 
 <img src="KATA-tennis-screenshot.PNG"/>
+
+## Can I have more information about this project?
+
+Definitely, you find [here](https://www.blog.ismaillagouilly.com/tennis-kata-my-implementation-in-java-of-the-tennis-kata) the full article about this project on my blog.
+
+Enjoy 😉
