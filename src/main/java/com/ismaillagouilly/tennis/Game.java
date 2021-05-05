@@ -41,6 +41,17 @@ class Game {
 
     private Player winner;
 
+    Game(Player player1, Player player2) {
+
+        this.player1 = player1;
+        this.player2 = player2;
+        gameScorePlayer1 = 0;
+        gameScorePlayer2 = 0;
+        gameScoreTextPlayer1 = "";
+        gameScoreTextPlayer2 = "";
+        winner = null;
+    }
+
     Game(Set set) {
 
         player1 = set.getPlayer1();
@@ -57,7 +68,7 @@ class Game {
 
         do {
             // Randomly get the next Player who scores a Point
-            Player player = getPointWinner();
+            Player player = retrievePlayer(this);
 
             incrementGameScorePlayer(player, displayInformation);
 
@@ -72,7 +83,7 @@ class Game {
         } while (winner == null);
     }
 
-    private void displayGameScore(DisplayInformation displayInformation) {
+    protected void displayGameScore(DisplayInformation displayInformation) {
 
         if (winner == null) {
 
@@ -98,7 +109,7 @@ class Game {
         }
     }
 
-    private void incrementGameScorePlayer(Player player, DisplayInformation displayInformation) {
+    protected void incrementGameScorePlayer(Player player, DisplayInformation displayInformation) {
 
         Boolean scoringPlayer = (player.getUsername().equals(player1.getUsername())) ? true : false;
 
@@ -184,8 +195,8 @@ class Game {
         return pointsList.get(gameScore);
     }
 
-    private Player getPointWinner() {
-        return (Math.random() < 0.5) ? player1 : player2;
+    private Player retrievePlayer(Game game) {
+        return (Math.random() < 0.5) ? game.getPlayer1() : game.getPlayer2();
     }
 
 }
