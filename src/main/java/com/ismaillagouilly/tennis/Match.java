@@ -54,7 +54,7 @@ class Match {
         } while (winner == null);
     }
 
-    private void incrementMatchScorePlayer(Player player) {
+    void incrementMatchScorePlayer(Player player) {
 
         String gameWinner = (player.getUsername().equals(player1.getUsername())) ? player1.getUsername() : player2.getUsername();
 
