@@ -94,7 +94,7 @@ class Game {
     private Integer incrementGameScore(Player player, DisplayInformation displayInformation) {
         displayInformation.displayGamePoint(player);
 
-        if (player1 == player) {
+        if (player1.equals(player)) {
             return gameScorePlayer1++;
         } else {
             return gameScorePlayer2++;
