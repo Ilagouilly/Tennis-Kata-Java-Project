@@ -59,16 +59,11 @@ class Set {
     }
 
     void play(DisplayInformation displayInformation) {
-
         do {
             currentGame = new Game(this);
-
             currentGame.play(displayInformation);
-
             incrementSetScorePlayer(currentGame.getWinner());
-
             displaySetScore(displayInformation);
-
         } while (winner == null);
     }
 
@@ -119,7 +114,6 @@ class Set {
 
         // Increment Tie break Score
         incrementTieBreakScore(player);
-
         // Tie break score is at least 7 + 2 Tie break points difference => increment set scores & designate a winner
         if ((tieBreakScorePlayer1 >= SEVEN && (tieBreakScorePlayer1 >= (tieBreakScorePlayer2 + TWO)) && player1Scoring)
                 || (tieBreakScorePlayer2 >= SEVEN && (tieBreakScorePlayer2 >= (tieBreakScorePlayer1 + TWO))) && player2Scoring) {
@@ -131,26 +125,26 @@ class Set {
 
 
     private void designateWinner(Player player) {
-        if (player1.getUsername().equals(player.getUsername())) {
+        if (player1.equals(player)) {
             winner = player1;
         } else {
             winner = player2;
         }
     }
 
-    private Integer incrementSetScore(Player player) {
-        if (player.getUsername().equals(player1.getUsername())) {
-            return setScorePlayer1++;
+    private void incrementSetScore(Player player) {
+        if (player.equals(player1)) {
+            setScorePlayer1++;
         } else {
-            return setScorePlayer2++;
+            setScorePlayer2++;
         }
     }
 
-    private Integer incrementTieBreakScore(Player player) {
-        if (player.getUsername().equals(player1.getUsername())) {
-            return tieBreakScorePlayer1++;
+    private void incrementTieBreakScore(Player player) {
+        if (player.equals(player1)) {
+            tieBreakScorePlayer1++;
         } else {
-            return tieBreakScorePlayer2++;
+            tieBreakScorePlayer2++;
         }
     }
 }

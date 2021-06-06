@@ -22,8 +22,8 @@ import lombok.Setter;
 @Setter
 class Match {
 
-    private static final Integer ONE = 1;
     private static final Integer TWO = 2;
+    private static final Integer THREE = 2;
     private Player player1;
     private Player player2;
     private Set currentSet;
@@ -32,7 +32,6 @@ class Match {
     private Player winner;
 
     Match(Player player1, Player player2) {
-
         this.player1 = player1;
         this.player2 = player2;
         matchScorePlayer1 = 0;
@@ -41,7 +40,6 @@ class Match {
     }
 
     void play(DisplayInformation displayInformation) {
-
         do {
             currentSet = new Set(this);
             currentSet.play(displayInformation);
@@ -56,35 +54,28 @@ class Match {
     void incrementMatchScorePlayer(Player player) {
         boolean player1Scoring = player.equals(player1);
         boolean player2Scoring = player.equals(player2);
-
         incrementMatchScore(player);
 
-        if ((matchScorePlayer1.equals(TWO) && matchScorePlayer2 <= TWO && player1Scoring)
-                || (matchScorePlayer2.equals(TWO) && matchScorePlayer1 <= TWO && player2Scoring)) {
+        // The first player to win 3 sets wins the Match
+        if ((matchScorePlayer1.equals(THREE) && matchScorePlayer2 <= TWO && player1Scoring)
+                || (matchScorePlayer2.equals(THREE) && matchScorePlayer1 <= TWO && player2Scoring)) {
             designateWinner(player);
         }
     }
 
-    private Integer incrementMatchScore(Player player) {
-
-        if (player.getUsername().equals(player1.getUsername())) {
-            return matchScorePlayer1++;
+    private void incrementMatchScore(Player player) {
+        if (player1.equals(player)) {
+            matchScorePlayer1++;
         } else {
-            return matchScorePlayer2++;
+            matchScorePlayer2++;
         }
     }
 
     private void designateWinner(Player player) {
-
-        if (player1.getUsername().equals(player.getUsername())) {
-            winner = player1;
-        } else {
-            winner = player2;
-        }
+        winner = player1.equals(player) ? player1 : player2;
     }
 
     private void announceWinner(DisplayInformation displayInformation) {
-
         if (winner != null) {
             displayInformation.displayMatchWinner(winner);
         }
