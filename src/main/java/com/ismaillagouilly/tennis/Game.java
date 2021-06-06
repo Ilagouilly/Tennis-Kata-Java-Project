@@ -62,7 +62,6 @@ class Game {
         winner = null;
     }
 
-
     void play(DisplayInformation displayInformation) {
         do {
             // Randomly select the next Player who will score a point
@@ -119,7 +118,6 @@ class Game {
             incrementGameScore(player, displayInformation);
         }
     }
-
 
     private void activateDeuceRule(Player player, DisplayInformation displayInformation) {
         boolean player1Scoring = player.equals(player1);

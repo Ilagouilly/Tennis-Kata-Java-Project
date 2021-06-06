@@ -123,7 +123,6 @@ class Set {
         }
     }
 
-
     private void designateWinner(Player player) {
         if (player1.equals(player)) {
             winner = player1;
