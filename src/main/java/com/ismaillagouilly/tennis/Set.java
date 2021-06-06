@@ -22,9 +22,11 @@ import lombok.Setter;
 @Setter
 class Set {
 
+    private static final Integer TWO = 2;
     private static final Integer FOUR = 4;
     private static final Integer FIVE = 5;
     private static final Integer SIX = 6;
+    private static final Integer SEVEN = 7;
     private Player player1;
     private Player player2;
     private Game currentGame;
@@ -89,53 +91,38 @@ class Set {
     }
 
     void incrementSetScorePlayer(Player player) {
-        String gameWinner = (player.getUsername().equals(player1.getUsername())) ? player1.getUsername() : player2.getUsername();
+        boolean player1Scoring = player.equals(player1);
+        boolean player2Scoring = player.equals(player2);
 
-        // Set Score is ( 4 - 4 ) => always increment scores
-        if (setScorePlayer1 <= FOUR && setScorePlayer2 <= FOUR) {
-
-            incrementSetScore(player);
-            // Set Score is ( 5 - 4 ) or ( 4 - 5 ) leading to ( 5 - 5 ) => always increment scores
-        } else if ((player1.getUsername().equals(gameWinner) && setScorePlayer1 <= FOUR && setScorePlayer2.equals(FIVE))
-                || (player2.getUsername().equals(gameWinner) && setScorePlayer2 <= FOUR && setScorePlayer1.equals(FIVE))) {
-            incrementSetScore(player);
-
-            // Set Score is ( 5 - 4 ) or ( 4 - 5 ) leading to ( 4 - 6 ) or ( 6 - 4 ) => increment scores & designate a winner
-        } else if ((player1.getUsername().equals(gameWinner) && setScorePlayer1.equals(FIVE) && setScorePlayer2 <= FOUR)
-                || (player2.getUsername().equals(gameWinner) && setScorePlayer2.equals(FIVE) && setScorePlayer1 <= FOUR)) {
+        // Set Score is ( 5 - 4 ) or ( 4 - 5 ) leading to ( 4 - 6 ) or ( 6 - 4 ) => increment scores & designate a winner
+        if ((setScorePlayer1.equals(FIVE) && setScorePlayer2 <= FOUR && player1Scoring)
+                || (setScorePlayer2.equals(FIVE) && setScorePlayer1 <= FOUR && player2Scoring)) {
             incrementSetScore(player);
             designateWinner(player);
-
-            // Set Score is ( 5 - 5 ) => always increment scores
-        } else if ((setScorePlayer1.equals(FIVE) && setScorePlayer2.equals(FIVE))) {
-            incrementSetScore(player);
-
-            // Set Score is ( 5 - 6 ) or ( 6 - 5 ) leading to ( 5 - 7 ) or ( 7 - 5 ) => increment scores & designate a winner
-        } else if ((player1.getUsername().equals(gameWinner) && setScorePlayer1.equals(SIX) && setScorePlayer2 <= FIVE)
-                || (player2.getUsername().equals(gameWinner) && setScorePlayer2.equals(SIX) && setScorePlayer1 <= FIVE)) {
-            incrementSetScore(player);
-            designateWinner(player);
-
             // Set Score is ( 6 - 6 ) => activate tie break rule
         } else if ((setScorePlayer2.equals(SIX) && setScorePlayer1.equals(SIX))) {
             activateTieBreak(player);
-
-            // Set Score is ( 5 - 6 ) or ( 6 - 5 ) leading to ( 6 - 6 ) => increment scores
-        } else if ((player1.getUsername().equals(gameWinner) && setScorePlayer1.equals(FIVE) && setScorePlayer2.equals(SIX))
-                || (player2.getUsername().equals(gameWinner) && setScorePlayer2.equals(FIVE) && setScorePlayer1.equals(SIX))) {
-
+            // Set Score is ( 5 - 6 ) or ( 6 - 5 ) leading to ( 5 - 7 ) or ( 7 - 5 ) => increment scores & designate a winner
+        } else if ((setScorePlayer1.equals(SIX) && setScorePlayer2 <= FIVE && player1Scoring)
+                || (setScorePlayer2.equals(SIX) && setScorePlayer1 <= FIVE && player2Scoring)) {
+            incrementSetScore(player);
+            designateWinner(player);
+            // All other cases => increment set scores
+        } else {
             incrementSetScore(player);
         }
     }
 
     private void activateTieBreak(Player player) {
-        String gameWinner = (player.getUsername().equals(player1.getUsername())) ? player1.getUsername() : player2.getUsername();
+        boolean player1Scoring = player.equals(player1);
+        boolean player2Scoring = player.equals(player2);
+
         // Increment Tie break Score
         incrementTieBreakScore(player);
 
         // Tie break score is at least 7 + 2 Tie break points difference => increment set scores & designate a winner
-        if ((player1.getUsername().equals(gameWinner) && tieBreakScorePlayer1 >= 7 && (tieBreakScorePlayer1 >= (tieBreakScorePlayer2 + 2)))
-                || (player2.getUsername().equals(gameWinner) && tieBreakScorePlayer2 >= 7 && (tieBreakScorePlayer2 >= (tieBreakScorePlayer1 + 2)))) {
+        if ((tieBreakScorePlayer1 >= SEVEN && (tieBreakScorePlayer1 >= (tieBreakScorePlayer2 + TWO)) && player1Scoring)
+                || (tieBreakScorePlayer2 >= SEVEN && (tieBreakScorePlayer2 >= (tieBreakScorePlayer1 + TWO))) && player2Scoring) {
 
             incrementSetScore(player);
             designateWinner(player);

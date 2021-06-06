@@ -44,28 +44,23 @@ class Match {
 
         do {
             currentSet = new Set(this);
-
             currentSet.play(displayInformation);
-
             incrementMatchScorePlayer(currentSet.getWinner());
-
             announceWinner(displayInformation);
-
         } while (winner == null);
+
+        // Display the Match Score
+        displayInformation.displayMatchScore(getMatchScorePlayer1(), getMatchScorePlayer2());
     }
 
     void incrementMatchScorePlayer(Player player) {
+        boolean player1Scoring = player.equals(player1);
+        boolean player2Scoring = player.equals(player2);
 
-        String gameWinner = (player.getUsername().equals(player1.getUsername())) ? player1.getUsername() : player2.getUsername();
+        incrementMatchScore(player);
 
-        if (matchScorePlayer1 < TWO && matchScorePlayer2 < TWO) {
-            incrementMatchScore(player);
-        } else if ((player1.getUsername().equals(gameWinner) && matchScorePlayer1 <= ONE && matchScorePlayer2.equals(TWO))
-                || (player2.getUsername().equals(gameWinner) && matchScorePlayer2 <= ONE && matchScorePlayer1.equals(TWO))) {
-            incrementMatchScore(player);
-        } else if ((player1.getUsername().equals(gameWinner) && matchScorePlayer1.equals(TWO) && matchScorePlayer2 <= TWO)
-                || (player2.getUsername().equals(gameWinner) && matchScorePlayer2.equals(TWO) && matchScorePlayer1 <= TWO)) {
-            incrementMatchScore(player);
+        if ((matchScorePlayer1.equals(TWO) && matchScorePlayer2 <= TWO && player1Scoring)
+                || (matchScorePlayer2.equals(TWO) && matchScorePlayer1 <= TWO && player2Scoring)) {
             designateWinner(player);
         }
     }
